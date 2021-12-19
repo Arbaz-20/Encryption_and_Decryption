@@ -1,0 +1,15 @@
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'application'
+
+
+mainClassName = 'guipro.Main'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation "mysql:mysql-connector-java:8.0.22"
+    testImplementation     'junit:junit:4.13'
+}
