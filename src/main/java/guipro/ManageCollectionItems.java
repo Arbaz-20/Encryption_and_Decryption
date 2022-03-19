@@ -63,7 +63,7 @@ public class ManageCollectionItems extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("ManageCollectionItems");
+        setTitle("Encryption & Decryption System");
         setResizable(false);
 
         jLabel1.setText("COLLECTION ITEM");
@@ -230,6 +230,7 @@ public class ManageCollectionItems extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked

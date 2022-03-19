@@ -52,7 +52,7 @@ public class AddCollectionItems extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Add Collections");
+        setTitle("Add Collections Items");
         setResizable(false);
 
         jLabel1.setText("Left Character");
@@ -150,6 +150,7 @@ public class AddCollectionItems extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

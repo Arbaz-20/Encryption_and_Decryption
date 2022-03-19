@@ -1,6 +1,8 @@
 package guipro;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -92,7 +94,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Private Messaging");
+        setTitle("Encryption & Decryption System");
 
         jLabel1.setText("Select Name");
 
@@ -245,9 +247,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -263,6 +265,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -401,47 +404,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         //EXPORT
-        try {
-
-            JFrame collectionFrame = new JFrame("Export Collection");
-            collectionFrame.setResizable(false);
-            final JComboBox collectionBox = new JComboBox();
-            JButton buttonCollection = new JButton("Export");
-
-            buttonCollection.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    try {
-
-                        JFileChooser j = new JFileChooser(new java.io.File("."));
-                        j.setDialogTitle("Select a folder");
-                        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                        j.setAcceptAllFileFilterUsed(false);
-                        if (j.showOpenDialog(collectionFrame) == JFileChooser.APPROVE_OPTION) {
-                            String folder_path = j.getSelectedFile().toString();
-                            stmt = con.createStatement();
-                            ResultSet rs = stmt.executeQuery("select * from collections where name='" + collectionBox.getSelectedItem().toString() + "'");
-                            try (PrintWriter writer = new PrintWriter(
-                                    folder_path + "//" + collectionBox.getSelectedItem().toString() + "__" + System.currentTimeMillis() + ".txt", "UTF-8")) {
-                                while (rs.next()) {
-                                    writer.println(rs.getString("leftc") + "==" + rs.getString("rightc"));
-                                }
-                            }
-                        } else {
-                            JOptionPane.showMessageDialog(null, "No Selection ");
-                        }
-                    } catch (Exception ex) {
-
-                    }
-                }
-
-            });
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
+        new Export().setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -451,6 +414,10 @@ public class MainFrame extends javax.swing.JFrame {
 
             JFrame collectionFrame = new JFrame("Import Collection");
             collectionFrame.setResizable(false);
+            
+            Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+            collectionFrame.setLocation(dim.width/2-collectionFrame.getSize().width/2, dim.height/2-collectionFrame.getSize().height/2);
+            
             final JComboBox collectionBox = new JComboBox();
             JButton buttonCollection = new JButton("Import");
 
